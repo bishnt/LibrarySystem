@@ -13,4 +13,4 @@ int registerUser();
 int isUsernameTaken(char *username);
 int isLibrarian(char *role);
 
-#endif // !DEBUG
+#endif

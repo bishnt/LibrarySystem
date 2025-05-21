@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include "user.h"
 
-user savedUser, newUser;
+extern user savedUser, newUser;
 
 login(char *username, char *password, char*role){
   FILE *fp;
@@ -40,7 +40,7 @@ registerUser(){
   printf("\n\nEnter the Role: \t")
   scanf("%s ", newUser.role);
 
-  fprintf(fp, "%s, %s, %s", newUser.username);
+  fprintf(fp, "%s, %s, %s", newUser.username, newUser.password, newUser.role);
 
   fclose(fp);
 
@@ -60,11 +60,11 @@ isUsernameTaken(char *username){
 }
 
 isLibrarian(char *role){
-FILE fp;
-int check = 0;
-fp = fopen("users.txt", "r");
-while(fscanf(fp, "%s %s %s", savedUser.username , savedUser.password , savedUser.role) != EOF()){
-  if(strcmp( strcmp(savedUser.role, role) == 0){
+  FILE fp;
+  int check = 0;
+  fp = fopen("users.txt", "r");
+  while(fscanf(fp, "%s %s %s", savedUser.username , savedUser.password , savedUser.role) != EOF()){
+    if(strcmp( strcmp(savedUser.role, role) == 0){
     check ++;
     break;
   }
